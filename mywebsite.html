@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nilaya Dubey - Web Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Slate & Sky Blue -->
+    <!-- Application Structure Plan: A single-page portfolio layout with a sticky navigation bar for seamless scrolling between thematic sections (About, Skills, Projects, Experience, Certifications). This structure was chosen to provide a non-linear, user-driven exploration of the candidate's profile. Recruiters can immediately jump to the most relevant sections. Interactive elements like a skills chart and project modals are used to engage the user and present information more effectively than a static document, demonstrating the candidate's web development capabilities directly. -->
+    <!-- Visualization & Content Choices: 
+        - Skills: Resume Info -> Technical & Professional Skills. Goal -> Compare/Inform. Viz -> Horizontal Bar Chart (Chart.js) to visually quantify proficiency & Cards for organization. Interaction -> Tooltips on chart bars. Justification -> A chart is more engaging and provides a quicker understanding of technical strengths than a list.
+        - Projects: Resume Info -> Project descriptions. Goal -> Organize/Inform. Viz -> Grid of interactive cards. Interaction -> Clicking a card opens a modal with detailed project info. Justification -> Keeps the main interface clean while providing deep-dive information on demand.
+        - Experience/Education: Resume Info -> Internship & University details. Goal -> Show Change. Viz -> Vertical Timeline. Interaction -> Hover effects on timeline items. Justification -> A timeline is a visually compelling way to present chronological data.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 450px;
+            }
+        }
+        .modal-backdrop {
+            transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <nav class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#hero" class="text-2xl font-bold text-slate-900">Nilaya Dubey</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#about" class="text-slate-600 hover:bg-slate-200 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#skills" class="text-slate-600 hover:bg-slate-200 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                        <a href="#projects" class="text-slate-600 hover:bg-slate-200 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                        <a href="#experience" class="text-slate-600 hover:bg-slate-200 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium">Experience</a>
+                        <a href="#certifications" class="text-slate-600 hover:bg-slate-200 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium">Certifications</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="hero" class="bg-white py-20 md:py-32">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight">Nilaya Dubey</h1>
+                <p class="mt-4 text-xl md:text-2xl text-sky-600 font-medium">Aspiring Web Developer</p>
+                <div class="mt-8 flex justify-center items-center space-x-6 text-sm text-slate-600">
+                    <span>Indore, MP</span>
+                    <span>&bull;</span>
+                    <a href="mailto:nilayadubey2311@gmail.com" class="hover:text-sky-600">nilayadubey2311@gmail.com</a>
+                    <span>&bull;</span>
+                    <a href="tel:7694014364" class="hover:text-sky-600">7694014364</a>
+                </div>
+                 <div class="mt-6">
+                    <a href="https://www.linkedin.com/in/nilaya-dubey-2722a82a4" target="_blank" class="inline-block bg-sky-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-sky-700 transition-colors">
+                        View LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center text-slate-900">About Me</h2>
+                <p class="mt-6 text-lg text-slate-700 leading-relaxed text-center">
+                    I am a versatile and aspiring Web Developer with a solid foundation in both front-end and back-end technologies. My experience is enhanced by hands-on project work and a practical internship in RPA, giving me a unique ability to not only build web solutions but also to automate processes. As a certified professional in Microsoft Azure, UiPath RPA, and Google Analytics, I possess strong communication skills and am eager to apply my diverse technical skill set to create efficient, scalable, and impactful web solutions.
+                </p>
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center text-slate-900">Technical Skills</h2>
+                <p class="mt-4 text-center text-slate-600 max-w-2xl mx-auto">This chart visualizes my confidence and proficiency across key technologies. I am a dedicated learner, constantly working to deepen my expertise in each area.</p>
+                <div class="mt-12">
+                    <div class="chart-container">
+                        <canvas id="skillsChart"></canvas>
+                    </div>
+                </div>
+                 <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-sm">
+                        <h3 class="text-lg font-bold text-sky-700">Languages</h3>
+                        <ul class="mt-4 space-y-2 text-slate-600">
+                            <li>Java</li>
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-sm">
+                        <h3 class="text-lg font-bold text-sky-700">Concepts</h3>
+                        <ul class="mt-4 space-y-2 text-slate-600">
+                            <li>Data Structures & Algorithms</li>
+                            <li>Backend Development</li>
+                            <li>Frontend Development</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-sm">
+                        <h3 class="text-lg font-bold text-sky-700">Tools & Platforms</h3>
+                        <ul class="mt-4 space-y-2 text-slate-600">
+                            <li>Microsoft Azure</li>
+                            <li>UiPath (RPA)</li>
+                            <li>Google Analytics</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-sm">
+                        <h3 class="text-lg font-bold text-sky-700">Professional</h3>
+                        <ul class="mt-4 space-y-2 text-slate-600">
+                            <li>Excellent Communication</li>
+                            <li>Team Collaboration</li>
+                            <li>Problem-Solving</li>
+                            <li>Process Automation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="projects" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center text-slate-900">Projects</h2>
+                <p class="mt-4 text-center text-slate-600 max-w-2xl mx-auto">Here are some of the key projects I've worked on, showcasing my skills in both full-stack development and collaborative AI/ML implementation. Click on a project to learn more.</p>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="project-card bg-white p-6 rounded-lg shadow-lg cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all" data-project="camp">
+                        <h3 class="text-xl font-bold text-slate-900">Online Summer Camp Booking Website</h3>
+                        <p class="mt-2 text-slate-600">A full-stack web application developed from concept to deployment, handling both front-end and back-end responsibilities.</p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full">HTML</span>
+                            <span class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full">CSS</span>
+                            <span class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full">JavaScript</span>
+                            <span class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Java</span>
+                        </div>
+                    </div>
+                    <div class="project-card bg-white p-6 rounded-lg shadow-lg cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all" data-project="toxicity">
+                        <h3 class="text-xl font-bold text-slate-900">Comment Toxicity Detector</h3>
+                        <p class="mt-2 text-slate-600">An AI/ML-powered tool to analyze and classify text for toxicity, developed as part of a collaborative team project.</p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                             <span class="bg-teal-100 text-teal-800 text-xs font-medium px-2.5 py-0.5 rounded-full">AI/ML</span>
+                             <span class="bg-teal-100 text-teal-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Team Project</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center text-slate-900">Experience & Education</h2>
+                <p class="mt-4 text-center text-slate-600 max-w-2xl mx-auto">My professional journey and academic background have provided me with a strong foundation in computer science and practical, real-world experience.</p>
+                <div class="mt-12 relative">
+                    <div class="absolute w-0.5 h-full bg-slate-200 left-1/2 -translate-x-1/2"></div>
+
+                    <div class="relative mt-8">
+                         <div class="flex justify-center mb-8">
+                            <div class="w-1/2 flex justify-end pr-8">
+                                <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm text-right">
+                                    <h3 class="text-lg font-bold text-sky-700">Medicaps University of Science</h3>
+                                    <p class="font-medium text-slate-800">B.Tech in Computer Science Engineering</p>
+                                    <p class="text-sm text-slate-500">Expected Graduation: June 2026</p>
+                                </div>
+                            </div>
+                            <div class="w-10 flex-shrink-0 flex items-center justify-center">
+                                <div class="w-4 h-4 rounded-full bg-sky-600 z-10"></div>
+                            </div>
+                            <div class="w-1/2"></div>
+                        </div>
+
+                        <div class="flex justify-center mb-8">
+                            <div class="w-1/2"></div>
+                            <div class="w-10 flex-shrink-0 flex items-center justify-center">
+                                <div class="w-4 h-4 rounded-full bg-sky-600 z-10"></div>
+                            </div>
+                            <div class="w-1/2 flex justify-start pl-8">
+                                <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm">
+                                    <h3 class="text-lg font-bold text-sky-700">RPA Intern</h3>
+                                    <p class="font-medium text-slate-800">UiPath, Indore</p>
+                                    <p class="text-sm text-slate-500">June 2025 - July 2025</p>
+                                    <ul class="mt-2 text-sm text-slate-600 list-disc list-inside space-y-1">
+                                        <li>Automated business processes using UiPath.</li>
+                                        <li>Developed, tested, and maintained RPA bots.</li>
+                                        <li>Analyzed requirements for automation solutions.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center text-slate-900">Certifications</h2>
+                 <p class="mt-4 text-center text-slate-600 max-w-2xl mx-auto">I am committed to continuous learning and professional development, as demonstrated by my industry-recognized certifications.</p>
+                <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <h3 class="font-bold text-slate-800">Microsoft Certified</h3>
+                        <p class="text-sky-600">Azure Fundamentals</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <h3 class="font-bold text-slate-800">UiPath Certified</h3>
+                        <p class="text-sky-600">RPA Associate</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <h3 class="font-bold text-slate-800">Google Analytics</h3>
+                        <p class="text-sky-600">Individual Qualification</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <h3 class="font-bold text-slate-800">Advanced Java & DSA</h3>
+                        <p class="text-sky-600">Certificate of Completion</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl font-bold">Get In Touch</h2>
+            <p class="mt-4 text-slate-300">I'm currently seeking new opportunities. Feel free to reach out!</p>
+            <div class="mt-6 flex justify-center items-center space-x-6 text-slate-200">
+                <a href="mailto:nilayadubey2311@gmail.com" class="hover:text-sky-400">nilayadubey2311@gmail.com</a>
+                <span>&bull;</span>
+                <a href="tel:7694014364" class="hover:text-sky-400">7694014364</a>
+                 <span>&bull;</span>
+                <a href="https://www.linkedin.com/in/nilaya-dubey-2722a82a4" target="_blank" class="hover:text-sky-400">LinkedIn</a>
+            </div>
+            <p class="mt-8 text-xs text-slate-400">&copy; 2025 Nilaya Dubey. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <div id="projectModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+        <div id="modalBackdrop" class="modal-backdrop fixed inset-0 bg-black bg-opacity-50"></div>
+        <div id="modalContent" class="modal-content bg-white rounded-lg shadow-xl w-full max-w-2xl transform scale-95 z-10">
+            <div class="p-6 md:p-8">
+                <div class="flex justify-between items-start">
+                    <h3 id="modalTitle" class="text-2xl font-bold text-slate-900"></h3>
+                    <button id="closeModal" class="text-slate-500 hover:text-slate-800">&times;</button>
+                </div>
+                <div id="modalBody" class="mt-4 text-slate-600 leading-relaxed"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('skillsChart');
+            if(ctx) {
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Java', 'HTML5', 'CSS3', 'JavaScript', 'Data Structures', 'Backend Dev', 'Frontend Dev', 'RPA (UiPath)'],
+                        datasets: [{
+                            label: 'Proficiency',
+                            data: [85, 95, 90, 80, 85, 80, 90, 75],
+                            backgroundColor: 'rgba(56, 189, 248, 0.6)',
+                            borderColor: 'rgba(2, 132, 199, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                max: 100,
+                                grid: {
+                                    color: 'rgba(203, 213, 225, 0.5)'
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw}%`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const projects = {
+                camp: {
+                    title: 'Online Summer Camp Booking Website',
+                    description: `
+                        <p>This was a personal, full-stack project aimed at creating a complete booking solution for a summer camp. I was responsible for the entire development lifecycle, from initial concept to deployment.</p>
+                        <h4 class="font-bold mt-4 mb-2 text-slate-800">Key Features:</h4>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li><strong>User Authentication:</strong> Secure registration and login for parents and administrators.</li>
+                            <li><strong>Dynamic Camp Listings:</strong> Admins can add, update, and remove camp sessions, which are displayed dynamically to users.</li>
+                            <li><strong>Secure Booking System:</strong> An intuitive process for parents to select and book camp sessions for their children.</li>
+                            <li><strong>Administrative Dashboard:</strong> A backend interface for managing bookings, user accounts, and camp details.</li>
+                        </ul>
+                        <h4 class="font-bold mt-4 mb-2 text-slate-800">Technology Stack:</h4>
+                        <p>The front-end was built with <strong>HTML, CSS, and JavaScript</strong> to ensure a responsive and user-friendly experience. The back-end was powered by <strong>Java</strong>, handling all server-side logic, API endpoints, and database interactions for a robust and scalable solution.</p>
+                    `
+                },
+                toxicity: {
+                    title: 'Comment Toxicity Detector',
+                    description: `
+                        <p>This was a collaborative team project focused on applying AI/ML techniques to solve a real-world problem: identifying toxic online comments.</p>
+                        <h4 class="font-bold mt-4 mb-2 text-slate-800">My Contribution & Role:</h4>
+                        <p>My primary contribution was centered on the core classification model. I worked on:</p>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li><strong>Model Implementation:</strong> Helping to build and train the machine learning model responsible for analyzing text.</li>
+                            <li><strong>Multi-Label Classification:</strong> The model was designed to categorize comments into various levels of toxicity, such as 'toxic', 'severe toxic', 'obscene', 'threat', 'insult', and 'identity hate'.</li>
+                            <li><strong>Data Processing:</strong> Assisting with the pre-processing of the text data to prepare it for model training.</li>
+                        </ul>
+                        <h4 class="font-bold mt-4 mb-2 text-slate-800">Project Outcome:</h4>
+                        <p>This project was a valuable experience in teamwork, version control (using Git), and the practical application of machine learning concepts to build a functional tool for content moderation.</p>
+                    `
+                }
+            };
+
+            const projectCards = document.querySelectorAll('.project-card');
+            const modal = document.getElementById('projectModal');
+            const modalBackdrop = document.getElementById('modalBackdrop');
+            const modalContent = document.getElementById('modalContent');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            const closeModal = document.getElementById('closeModal');
+
+            function openModal(projectKey) {
+                const project = projects[projectKey];
+                if (project) {
+                    modalTitle.textContent = project.title;
+                    modalBody.innerHTML = project.description;
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                    setTimeout(() => {
+                      modalBackdrop.classList.remove('opacity-0');
+                      modalContent.classList.remove('scale-95');
+                    }, 10);
+                }
+            }
+
+            function closeTheModal() {
+                modalBackdrop.classList.add('opacity-0');
+                modalContent.classList.add('scale-95');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+
+            projectCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    openModal(card.dataset.project);
+                });
+            });
+
+            closeModal.addEventListener('click', closeTheModal);
+            modalBackdrop.addEventListener('click', closeTheModal);
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === "Escape" && !modal.classList.contains('hidden')) {
+                    closeTheModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
